@@ -3,7 +3,8 @@
 100 health each
 bounce around arena
 
-Teachers
+##Teachers
+-----------
   Mr.Miller
     Spawn sports equipment(Footballs,basketballs, etc.) and orbit around him
       4 damage per equipment
