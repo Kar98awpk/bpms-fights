@@ -40,3 +40,11 @@ bounce around arena
   - [PASSIVE] Every 13 seconds, eats a cookie to restore 15 health  
 
 ## Students
+
+---
+
+- Ben Chen
+   - Wields a weapon shaped like an integeral with the bottom number 0.
+     - When hit with the weapon, deals 4 damage, then sends opponent bouncing on walls 3 times, dealing 4 damage each time.
+     - 4 sec cooldown
+   - [PASSIVE] Every 5 swings, 
