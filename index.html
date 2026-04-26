@@ -36,7 +36,8 @@
 <script>
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-const constant = 12
+const constant = 12;
+const list_of_states = ["bounce ","poisoned ","charging ","integeral level ",""];
 
 let players = [];
 let running = false;
@@ -45,34 +46,44 @@ let running = false;
 function createPlayers() {
   players = [
     {
-      name: Player1,
+      name: "Player1",
+      character: null,
+      health_multiplier: 1,
       x: 100,
       y: 100,
       radius: 50,
-      direction: constant,
+      direction: Math.random * 360,
       speed: constant,
-      dx: randomSpeed(),
-      dy: randomSpeed(),
+      dx: 0,
+      dy: 0,
       color: "lime",
+      health: 100,
       states: []
     },
     {
-      name: Player2,
+      name: "Player2",
+      character: null,
+      health_multiplier: 1,
       x: 400,
       y: 400,
       radius: 50,
-      direction: Math.random() * 360,
-      speed: 3,
-      dx: getXSpeed(4),
-      dy: getYSpeed(50, Math.random() * 360),
+      direction: Math.random * 360,
+      speed: 0,
+      dx: 0,
+      dy: 0,
       color: "red",
+      health: 100,
       states: []
     }
   ];
 }
 
 function getXSpeed(direction) {
-  return cos
+  return Math.cos(Math.pi * direction / 180);
+}
+
+function getYSpeed(direction) {
+  return Math.sin(Math.pi * direction / -180)
 }
 
 // Start button
@@ -123,4 +134,5 @@ gameLoop();
 
 </body>
 </html>
+
 
