@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BPMS Fights</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0b1a0b;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+    }
+
+    canvas {
+      background: #1f3d1f;
+      border: 3px solid white;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<button onclick="startGame()">Start</button>
+<canvas id="gameCanvas" width="550" height="550"></canvas>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const constant = 12
+
+let players = [];
+let running = false;
+
+// Create players
+function createPlayers() {
+  players = [
+    {
+      name: Player1,
+      x: 100,
+      y: 100,
+      radius: 50,
+      direction: constant,
+      speed: constant,
+      dx: randomSpeed(),
+      dy: randomSpeed(),
+      color: "lime",
+      states: []
+    },
+    {
+      name: Player2,
+      x: 400,
+      y: 400,
+      radius: 50,
+      direction: Math.random() * 360,
+      speed: 3,
+      dx: getXSpeed(4),
+      dy: getYSpeed(50, Math.random() * 360),
+      color: "red",
+      states: []
+    }
+  ];
+}
+
+function getXSpeed(direction) {
+  return cos
+}
+
+// Start button
+function startGame() {
+  createPlayers();
+  running = true;
+}
+
+// Update movement
+function update() {
+  if (!running) return;
+
+  players.forEach(p => {
+    p.x += p.dx;
+    p.y += p.dy;
+
+    // Bounce off walls
+    if (p.x - p.radius <= 0 || p.x + p.radius >= canvas.width) {
+      p.dx *= -1;
+    }
+    if (p.y - p.radius <= 0 || p.y + p.radius >= canvas.height) {
+      p.dy *= -1;
+    }
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  players.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    ctx.closePath();
+  });
+}
+
+// Game loop
+function gameLoop() {
+  update();
+  draw();
+  requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
+
+</body>
+</html>
+
